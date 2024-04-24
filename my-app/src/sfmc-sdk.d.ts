@@ -1,0 +1,2 @@
+declare module "sfmc-sdk";
+

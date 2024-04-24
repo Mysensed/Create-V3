@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import IntroBlock from "@/components/navigation/introBlock";
+import IntroBlock from "@/components/ui/introBlock";
 import Search from './components/Search';
 
 import {
@@ -12,25 +12,21 @@ import {
 } from "@/components/ui/card"
 
 
-
-const MainBlock = { 
-  title: 'Wiki search', 
-  body: 'Demo page for tutorial search in next.js. Creating a searchbar and getting results from wikipedia', 
-  cta: 'view tutorial', 
-  href: 'https://www.youtube.com/watch?v=PcHY2Py6AQY&list=PL0Zuz27SZ-6Pk-QJIdGd1tGZEzy9RTgtj&index=5&ab_channel=DaveGray'
-};
-// const SecondaryBlock = { preTitle: 'Total', title: '1234', body: 'Content items', sub: '' };
-// const thirdBlock = { preTitle: 'pretitle', title: 'Content Library', body: 'value2', sub: '' };
-
-
-
+const introContent = [
+  { 
+    title: 'Wiki search', 
+    body: 'Demo page for tutorial search in next.js. Creating a searchbar and getting results from wikipedia', 
+    cta: 'view tutorial', 
+    href: 'https://www.youtube.com/watch?v=PcHY2Py6AQY&list=PL0Zuz27SZ-6Pk-QJIdGd1tGZEzy9RTgtj&index=5&ab_channel=DaveGray'
+  },
+]
 
 
 
 export default function LibraryPage() {
   return (
     <>
-      {IntroBlock(MainBlock)}
+      <IntroBlock content={introContent} />
 
       <Card x-chunk="wikiSearch" className="my-5">
         <CardHeader>

@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import IntroBlock from "@/components/navigation/introBlock";
+import IntroBlock from "@/components/ui/introBlock";
 import getAllUsers from '@/lib/features/users/getAllUsers';
 import Link from 'next/link';
 import { TableHead, TableRow, TableHeader, TableCell, TableBody, Table } from "@/components/ui/table"
@@ -20,17 +20,16 @@ export default  async function LibraryPage() {
   const usersData: Promise<DemoUser[]> = getAllUsers()
   const users = await usersData
 
-  const MainBlock = { 
-    title: 'Users', 
-    body: 'demo page to fetch users from https://jsonplaceholder.typicode.com/users', 
-  };
-  
-  const SecondaryBlock = { 
-    preTitle: 'total users', 
-    title: `${users.length}`,
-    body: '',
-    sub: '',
-  };
+  const introContent = [
+    { 
+      title: 'Users', 
+      body: 'demo page to fetch users from https://jsonplaceholder.typicode.com/users', 
+    },
+    { 
+      preTitle: 'total users', 
+      title: `${users.length}`,
+    }
+  ]
 
   const userRows = (
     <>
@@ -58,7 +57,7 @@ export default  async function LibraryPage() {
 
   return (
     <>
-      {IntroBlock(MainBlock, SecondaryBlock)}
+      <IntroBlock content={introContent} />
 
       <Card x-chunk="users-01-chunk-3">
         <CardHeader className="px-7">

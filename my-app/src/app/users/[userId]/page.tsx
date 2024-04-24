@@ -1,4 +1,4 @@
-import IntroBlock from "@/components/navigation/introBlock";
+import IntroBlock from "@/components/ui/introBlock";
 import getUser from "@/lib/features/users/getUser";
 import getUserPosts from "@/lib/features/users/getUserPosts";
 import { Suspense } from "react";
@@ -36,26 +36,27 @@ export default async function userPage({ params: {userId} }: Params) {
     //way to check if all promises are done.
     const [user, userPosts] = await Promise.all([userData, userPostsData])
 
+
+    const introContent = [
+        { 
+            title: `${user.name}`, 
+            body: 'demo page to load a dynamic url', 
+        }, 
+        { 
+            preTitle: 'user id', 
+            title: userId,
+            body: 'for this user',
+        },
+        { 
+            preTitle: 'posts by user', 
+            title:  `${userPosts.length}`,
+            body: 'for this user',
+        }
+    ]
+
     return(
         <>
-            {IntroBlock(
-                { 
-                    title: `${user.name}`, 
-                    body: 'demo page to load a dynamic url', 
-                }, 
-                { 
-                    preTitle: 'user id', 
-                    title: userId,
-                    body: 'for this user',
-                    sub: '',
-                },
-                { 
-                    preTitle: 'posts by user', 
-                    title:  `${userPosts.length}`,
-                    body: 'for this user',
-                    sub: '',
-                }
-            )}
+            <IntroBlock content={introContent} />
 
             <Suspense
                 fallback={<h2>Loading posts</h2>}

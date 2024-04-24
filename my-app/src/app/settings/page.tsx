@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import IntroBlock from "@/components/navigation/introBlock";
+import IntroBlock from "@/components/ui/introBlock";
 import { DarkmodeToggle } from '@/components/ui/darkmode-toggle';
 
 
@@ -8,23 +8,30 @@ export const metadata: Metadata = {
   description: ''
 }
 
-
-const MainBlock = { 
-  title: 'Personal settings', 
-  body: 'Here you can set settings', 
-  cta: '', 
-  href: ''
-};
-const SecondaryBlock = { preTitle: 'User', title: 'You', body: '', sub: '' };
-const thirdBlock = { preTitle: 'Brand selected', title: 'Springbok', body: '', sub: '' };
-
+const introContent = [
+  { 
+    preTitle: '',
+    title: 'Personal Settings', 
+    body: 'Here you can set settings', 
+  },
+  { 
+    preTitle: 'user',
+    title: 'You', 
+    body: 'content items',
+  },
+  {
+    preTitle: 'Brand',
+    title: 'Springbok', 
+    body: 'default styling',
+  }
+]
 
 
 
 export default function SettingsPage() {
   return (
     <>
-      {IntroBlock(MainBlock, SecondaryBlock, thirdBlock)}
+      <IntroBlock content={introContent} />
       
       <div className="flex items-center">
         <DarkmodeToggle /> <p className="mx-5">Toggle darkmode</p>

@@ -1,3 +1,5 @@
+//SIMULATING POST TO COUNTER
+
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 
